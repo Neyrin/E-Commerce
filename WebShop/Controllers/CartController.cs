@@ -24,34 +24,7 @@ namespace WebShop.Controllers
             var connectionString = configuration.GetConnectionString("ConnectionString");
             this.CartService = new CartService(new CartRepository(connectionString));
         }
-
-        [HttpGet]
-        [ProducesResponseType(typeof(Cart), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get()
-        {
-            var CustomerItems = CartService.Get();
-            if (CustomerItems != null)
-            {
-                return Ok(CustomerItems);
-            }
-            return BadRequest();
-        }
-
-
-        [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Cart), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get(int id)
-        {
-            var CustomerItem = CartService.Get(id);
-            if (CustomerItem != null)
-            {
-                return this.Ok(CustomerItem);
-            }
-            return NotFound();
-        }
-
+        
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
