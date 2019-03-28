@@ -30,14 +30,21 @@ namespace WebShop.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Post([FromBody]Cart cart)
         {
-            var result = this.CartService.Add(cart);
+            var newCart = this.CartService.Add(cart);
 
-            if (!result)
+            if (newCart == 0)
             {
                 return BadRequest();
             }
-
+            else if (newCart == 1)
+            {
             return Ok();
+            }
+            else
+            {
+                return Ok(newCart);
+            }
+
         }
 
 
