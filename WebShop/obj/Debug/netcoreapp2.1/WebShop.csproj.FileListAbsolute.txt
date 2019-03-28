@@ -1,0 +1,14 @@
+C:\Users\isaar\source\repos\WebShop\WebShop\bin\Debug\netcoreapp2.1\WebShop.deps.json
+C:\Users\isaar\source\repos\WebShop\WebShop\bin\Debug\netcoreapp2.1\WebShop.runtimeconfig.json
+C:\Users\isaar\source\repos\WebShop\WebShop\bin\Debug\netcoreapp2.1\WebShop.runtimeconfig.dev.json
+C:\Users\isaar\source\repos\WebShop\WebShop\bin\Debug\netcoreapp2.1\WebShop.dll
+C:\Users\isaar\source\repos\WebShop\WebShop\obj\Debug\netcoreapp2.1\WebShop.csprojAssemblyReference.cache
+C:\Users\isaar\source\repos\WebShop\WebShop\obj\Debug\netcoreapp2.1\WebShop.csproj.CoreCompileInputs.cache
+C:\Users\isaar\source\repos\WebShop\WebShop\obj\Debug\netcoreapp2.1\WebShop.RazorAssemblyInfo.cache
+C:\Users\isaar\source\repos\WebShop\WebShop\obj\Debug\netcoreapp2.1\WebShop.RazorAssemblyInfo.cs
+C:\Users\isaar\source\repos\WebShop\WebShop\obj\Debug\netcoreapp2.1\WebShop.AssemblyInfoInputs.cache
+C:\Users\isaar\source\repos\WebShop\WebShop\obj\Debug\netcoreapp2.1\WebShop.AssemblyInfo.cs
+C:\Users\isaar\source\repos\WebShop\WebShop\obj\Debug\netcoreapp2.1\WebShop.RazorTargetAssemblyInfo.cache
+C:\Users\isaar\source\repos\WebShop\WebShop\bin\Debug\netcoreapp2.1\WebShop.pdb
+C:\Users\isaar\source\repos\WebShop\WebShop\obj\Debug\netcoreapp2.1\WebShop.dll
+C:\Users\isaar\source\repos\WebShop\WebShop\obj\Debug\netcoreapp2.1\WebShop.pdb
