@@ -18,25 +18,40 @@ namespace WebShop.Services
         {
             this.cartRepository = cartRepository;
         }
-
-        public List<Cart> Get()
+        
+        public int Add(Cart cart)
         {
-            return this.cartRepository.Get();
-        }
-
-        public Cart Get(int id)
-        {
-            return this.cartRepository.Get(id);
-        }
-
-        public bool Add(Cart cart)
-        {
-            if (cart != null)
+            if (cart.ProductId == 0)
             {
-                cartRepository.Add(cart);
-                return true;
+                return 0;
             }
-            return false;
+            else if (cart.CartId == 0)
+            {
+                cart.CartId = this.GetRandomCartId();
+                this.cartRepository.Add(cart);
+                return cart.CartId;
+            }
+            else
+            {
+                this.cartRepository.Add(cart);
+                return 0;
+            }
+        }
+
+        public int GetRandomCartId()
+
+        {
+            // Generate a random string with a given size
+            var returnString = "";
+            Random generateNumber = new Random();
+            for (int i = 0; i < 6; i++)
+            {
+                int tmpNumber = generateNumber.Next(1, 9);
+                returnString += tmpNumber.ToString();
+            }
+            int randNumber = Convert.ToInt32(returnString);
+            return randNumber;
+
         }
     }
 }
