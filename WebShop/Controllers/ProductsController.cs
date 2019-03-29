@@ -37,36 +37,5 @@ namespace WebShop.Controllers
             }
             return BadRequest();
         }
-
-
-        //[HttpGet("{id}")]
-        //[ProducesResponseType(typeof(Products), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public IActionResult Get(int id)
-        //{
-        //    var CustomerItem = ProductsService.Get(id);
-        //    if (CustomerItem != null)
-        //    {
-        //        return this.Ok(CustomerItem);
-        //    }
-        //    return NotFound();
-        //}
-
-        //[HttpPost]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //public IActionResult Post([FromBody]Products products)
-        //{
-        //    var result = this.ProductsService.Add(products);
-
-        //    if (!result)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    return Ok();
-        //}
-
-
     }
 }
