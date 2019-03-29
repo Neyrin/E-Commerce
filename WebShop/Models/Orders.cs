@@ -13,5 +13,11 @@ namespace WebShop.Models
 {
     public class Orders
     {
+        public int OrderId { get; set; }
+        public string ProductName { get; set; }
+        public int ProductID { get; set; }
+        public int Quantity { get; set; }
+        public int OrderDate { get; set; }
+        public float Price { get; set; }    
     }
 }
