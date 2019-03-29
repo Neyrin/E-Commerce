@@ -18,7 +18,21 @@ namespace WebShop.Services
         {
             this.cartRepository = cartRepository;
         }
-        
+
+        public List<Cart> Get()
+        {
+            return this.cartRepository.Get();
+        }
+
+        public List<Cart> Get(int cartId)
+        {
+            if (cartId == 0)
+            {
+                return null;
+            }
+            return this.cartRepository.Get(cartId);
+        }
+
         public int Add(Cart cart)
         {
             if (cart.ProductId == 0)

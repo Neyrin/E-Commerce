@@ -20,6 +20,26 @@ namespace WebShop.Repositories
             this.connectionString = connectionString;
         }
 
+        public List<Cart> Get()
+        {
+            using (var connection = new SqlConnection(this.connectionString))
+            {
+                var cart = connection.Query<Cart>("SELECT * FROM Cart").ToList();
+
+                return cart;
+            }
+        }
+
+        public List<Cart> Get(int cartId)
+        {
+            using (var connection = new SqlConnection(this.connectionString))
+            {
+                var cartItem = connection.Query<Cart>("SELECT * FROM Cart WHERE CartId = @cartId", new { cartId }).ToList();
+
+                return cartItem;
+            }
+        }
+
         public void Add(Cart cart)
         {
             using (var connection = new SqlConnection(this.connectionString))
