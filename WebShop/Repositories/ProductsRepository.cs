@@ -28,24 +28,6 @@ namespace WebShop.Repositories
                 return ProductsItem;
             }
         }
-
-        //public Products Get(int id)
-        //{
-        //    using (var connection = new SqlConnection(this.connectionString))
-        //    {
-        //        var ProductsItem = connection.QuerySingleOrDefault<Products>("SELECT * FROM Products WHERE Id = @id", new { id });
-        //        return ProductsItem;
-        //    }
-        //}
-
-        //public void Add(Products products)
-        //{
-        //    using (var connection = new SqlConnection(this.connectionString))
-        //    {
-        //        var ProductsItem = connection.Execute("INSERT INTO Products (Header, Body) VALUES(@header, @body)", products);
-        //    }
-        //}
-
     }
 
 }
