@@ -15,6 +15,6 @@ namespace WebShop.Models
     {
 
         public int CartId { get; set; }
-        public int ProductId { get;  }
+        public int ProductId { get; set; }
     }
 }
