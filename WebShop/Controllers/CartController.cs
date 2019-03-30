@@ -2,24 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebShop.Repositories;
-using WebShop.Models;
-using WebShop.Controllers;
-using WebShop.Services;
-using Dapper;
-using System.Data.SqlClient;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using WebShop.Models;
+using WebShop.Repositories;
+using WebShop.Services;
 
 namespace WebShop.Controllers
 {
     [Route("api/[Controller]")]
-    public class CustomerController : Controller
+    public class CartController : Controller
     {
         private readonly CartService cartService;
 
-        public CustomerController(IConfiguration configuration)
+        public CartController(IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("ConnectionString");
             this.cartService = new CartService(new CartRepository(connectionString));

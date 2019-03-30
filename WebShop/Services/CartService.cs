@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using Dapper;
 using WebShop.Models;
 using WebShop.Repositories;
-using WebShop.Services;
 
 namespace WebShop.Services
 {
@@ -48,7 +45,7 @@ namespace WebShop.Services
             else
             {
                 this.cartRepository.Add(cart);
-                return 0;
+                return 1;
             }
         }
 

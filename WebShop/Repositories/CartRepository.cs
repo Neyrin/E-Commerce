@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebShop.Repositories;
 using WebShop.Models;
-using WebShop.Controllers;
-using WebShop.Services;
 using Dapper;
 using System.Data.SqlClient;
 
@@ -24,9 +21,9 @@ namespace WebShop.Repositories
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var cart = connection.Query<Cart>("SELECT * FROM Cart").ToList();
+                var cartItem = connection.Query<Cart>("SELECT * FROM Cart").ToList();
 
-                return cart;
+                return cartItem;
             }
         }
 
@@ -34,9 +31,9 @@ namespace WebShop.Repositories
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var cartItem = connection.Query<Cart>("SELECT * FROM Cart WHERE CartId = @cartId", new { cartId }).ToList();
+                var cart = connection.Query<Cart>("SELECT * FROM Cart WHERE CartId = @cartId", new { cartId }).ToList();
 
-                return cartItem;
+                return cart;
             }
         }
 
@@ -44,7 +41,15 @@ namespace WebShop.Repositories
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var CartItem = connection.Execute("INSERT INTO Cart (CartId, ProductId) VALUES(@cartId, @productId)", cart);
+                connection.Execute("INSERT INTO Cart (CartId, ProductId) VALUES(@cartId, @productId)", cart);
+            }
+        }
+
+        public void Delete(int cartId)
+        {
+            using (var connection = new SqlConnection(this.connectionString))
+            {
+                connection.Execute("DELETE FROM Cart Where CartId = @cartId", new { cartId });
             }
         }
 
