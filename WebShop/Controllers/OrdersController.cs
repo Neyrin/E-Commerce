@@ -15,11 +15,11 @@ using Microsoft.Extensions.Configuration;
 namespace WebShop.Controllers
 {
     [Route("api/[Controller]")]
-    public class OrderController : Controller
+    public class OrdersController : Controller
     {
         private readonly OrdersService OrdersService;
 
-        public OrderController(IConfiguration configuration)
+        public OrdersController(IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("ConnectionString");
             this.OrdersService = new OrdersService(new OrdersRepository(connectionString));
