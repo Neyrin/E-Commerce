@@ -45,7 +45,7 @@ namespace WebShop.Services
             else
             {
                 this.cartRepository.Add(cart);
-                return 1;
+                return cart.CartId;
             }
         }
 
