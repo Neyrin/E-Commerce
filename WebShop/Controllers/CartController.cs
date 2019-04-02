@@ -59,15 +59,7 @@ namespace WebShop.Controllers
             {
                 return BadRequest();
             }
-            else if (newCart == 1)
-            {
-            return Ok();
-            }
-            else
-            {
                 return Ok(newCart);
-            }
-
         }
 
 
