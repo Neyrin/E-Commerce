@@ -29,12 +29,12 @@ namespace WebShop.Repositories
             }
         }
 
-        public Orders Get(int id)
+        public List<Orders> Get(int id)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var OrdersItem = connection.QuerySingleOrDefault<Orders>("SELECT * FROM Orders WHERE Id = @id", new { id });
-                return OrdersItem;
+                var OrdersItem = connection.Query<Orders>("SELECT * FROM Orders WHERE OrderId = @id", new { id });
+                return OrdersItem.ToList();
             }
         }
 
@@ -42,7 +42,8 @@ namespace WebShop.Repositories
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var OrdersItem = connection.Execute("INSERT INTO Orders (Header, Body) VALUES(@header, @body)", orders);
+                var OrdersItem = connection.Execute(@"INSERT INTO Orders (OrderId, ProductName, ProductId, Price) 
+                                                      VALUES(@orderId, @productName, @productId, @price)", orders);
             }
         }
 

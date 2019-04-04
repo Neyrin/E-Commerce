@@ -31,7 +31,7 @@ namespace WebShop.Repositories
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var cart = connection.Query<Cart>("SELECT * FROM Cart WHERE CartId = @cartId", new { cartId }).ToList();
+                var cart = connection.Query<Cart>("SELECT cart.cartid, cart.productId, productName, price FROM Cart INNER JOIN products ON cart.productId=products.productId WHERE cart.cartId=@cartId", new { cartId }).ToList();
 
                 return cart;
             }

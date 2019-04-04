@@ -15,14 +15,13 @@ namespace WebShop.Models
     public class OrderInfo
     {
         public int OrderId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Phonenumber { get; set; }
+        public string Name { get; set; }
         public string Email { get; set; }
-        public string SteetAddress { get; set; }
+        public string Adress { get; set; }
         public string City { get; set; }
-        public string PostalCode { get; set; }
+        public string ZipCode { get; set; }
         public float TotalPrice { get; set; }
         public string OrderDate { get; set; }
+        public List<Orders> OrderItems { get; set; }
     }
 }

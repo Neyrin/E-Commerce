@@ -33,16 +33,18 @@ namespace WebShop.Repositories
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var OrderInfoItem = connection.QuerySingleOrDefault<OrderInfo>("SELECT * FROM OrderInfo WHERE Id = @id", new { id });
+                var OrderInfoItem = connection.QuerySingleOrDefault<OrderInfo>("SELECT * FROM OrderInfo WHERE OrderId = @id", new { id });
                 return OrderInfoItem;
             }
         }
 
-        public void Add(OrderInfo orderInfo)
+        public int Add(OrderInfo orderInfo)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var OrderInfoItem = connection.Execute("INSERT INTO OrderInfo (Header, Body) VALUES(@header, @body)", orderInfo);
+                return connection.QuerySingle<int>(@"INSERT INTO OrderInfo (Name, Email, Adress, City, ZipCode, TotalPrice, OrderDate) 
+                                                        VALUES(@name, @email, @adress, @city, @zipcode, @totalPrice, @orderDate)
+                                                        SELECT @@IDENTITY", orderInfo);
             }
         }
 

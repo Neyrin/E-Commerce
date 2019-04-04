@@ -22,7 +22,7 @@ namespace WebShop.Controllers
         public OrderInfoController(IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("ConnectionString");
-            this.OrderInfoService = new OrderInfoService(new OrderInfoRepository(connectionString));
+            this.OrderInfoService = new OrderInfoService(new OrderInfoRepository(connectionString), new OrdersRepository(connectionString), new CartRepository(connectionString));
         }
 
         [HttpGet]
@@ -52,12 +52,12 @@ namespace WebShop.Controllers
             return NotFound();
         }
 
-        [HttpPost]
+        [HttpPost("{cartId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Post([FromBody]OrderInfo orderInfo)
+        public IActionResult Post([FromBody]OrderInfo orderInfo, int cartId)
         {
-            var result = this.OrderInfoService.Add(orderInfo);
+            var result = this.OrderInfoService.Add(orderInfo, cartId);
 
             if (!result)
             {

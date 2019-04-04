@@ -13,10 +13,14 @@ namespace WebShop.Services
     public class OrderInfoService
     {
         private readonly OrderInfoRepository orderInfoRepository;
+        private readonly OrdersRepository ordersRepository;
+        private readonly CartRepository cartRepository;
 
-        public OrderInfoService(OrderInfoRepository orderInfoRepository)
+        public OrderInfoService(OrderInfoRepository orderInfoRepository, OrdersRepository ordersRepository, CartRepository cartRepository)
         {
             this.orderInfoRepository = orderInfoRepository;
+            this.ordersRepository = ordersRepository;
+            this.cartRepository = cartRepository;
         }
 
         public List<OrderInfo> Get()
@@ -26,17 +30,50 @@ namespace WebShop.Services
 
         public OrderInfo Get(int id)
         {
-            return this.orderInfoRepository.Get(id);
+            var orderInfo = this.orderInfoRepository.Get(id);
+            if(orderInfo == null)
+            {
+                return null;
+            }
+
+            orderInfo.OrderItems = this.ordersRepository.Get(id);
+            return orderInfo;
         }
 
-        public bool Add(OrderInfo orderInfo)
+        public bool Add(OrderInfo orderInfo, int cartId)
         {
-            if (orderInfo != null)
+            if (orderInfo == null)
             {
-                orderInfoRepository.Add(orderInfo);
-                return true;
+                return false;
             }
-            return false;
+
+            var carts = cartRepository.Get(cartId);
+
+            if (carts == null || !carts.Any())
+            {
+                return false;
+            }
+
+            var totalPrice = carts.Sum(x => x.Price);
+            orderInfo.TotalPrice = totalPrice;
+            orderInfo.OrderDate = DateTime.Now.ToString();
+
+            var orderId = orderInfoRepository.Add(orderInfo);
+
+            foreach (var cart in carts)
+            {
+                var orderItem = new Orders
+                {
+                    OrderId = orderId,
+                    ProductName = cart.ProductName,
+                    ProductID = cart.ProductId,
+                    Price = cart.Price
+                };
+
+                ordersRepository.Add(orderItem);
+            }
+
+            return true;
         }
     }
 }

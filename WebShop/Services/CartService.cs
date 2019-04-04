@@ -55,7 +55,7 @@ namespace WebShop.Services
             // Generate a random string with a given size
             var returnString = "";
             Random generateNumber = new Random();
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 8; i++)
             {
                 int tmpNumber = generateNumber.Next(1, 9);
                 returnString += tmpNumber.ToString();

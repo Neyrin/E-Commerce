@@ -26,7 +26,7 @@ namespace WebShop.Services
 
         public Orders Get(int id)
         {
-            return this.ordersRepository.Get(id);
+            return this.ordersRepository.Get(id)?.SingleOrDefault();
         }
 
         public bool Add(Orders orders)
