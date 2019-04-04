@@ -24,19 +24,19 @@ namespace WebShop.Services
             return this.productsRepository.Get();
         }
 
-        //public Products Get(int id)
-        //{
-        //    return this.productsRepository.Get(id);
-        //}
+        public Products Get(int productId)
+        {
+            return this.productsRepository.Get(productId);
+        }
 
-        //public bool Add(Products products)
-        //{
-        //    if (products != null)
-        //    {
-        //        productsRepository.Add(products);
-        //        return true;
-        //    }
-        //    return false;
-        //}
+        public bool Add(Products products)
+        {
+            if (products != null)
+            {
+                productsRepository.Add(products);
+                return true;
+            }
+            return false;
+        }
     }
 }

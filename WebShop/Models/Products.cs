@@ -13,12 +13,12 @@ namespace WebShop.Models
 {
     public class Products
     {
-        public int ProductId { get; }
-        public string Image { get; }
-        public string ProductType { get; }
-        public string ProductName { get; }
-        public string Description { get; }
-        public float Price { get; }
+        public int ProductId { get; set; }
+        public string Image { get; set; }
+        public string ProductType { get; set; }
+        public string ProductName { get; set; }
+        public string Description { get; set;  }
+        public float Price { get; set; }
 
     }
 }
