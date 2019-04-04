@@ -30,10 +30,10 @@ namespace WebShop.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get()
         {
-            var CustomerItems = OrdersService.Get();
-            if (CustomerItems != null)
+            var OrdersItems = OrdersService.Get();
+            if (OrdersItems != null)
             {
-                return Ok(CustomerItems);
+                return Ok(OrdersItems);
             }
             return BadRequest();
         }
@@ -44,10 +44,10 @@ namespace WebShop.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get(int id)
         {
-            var CustomerItem = OrdersService.Get(id);
-            if (CustomerItem != null)
+            var OrdersItem = OrdersService.Get(id);
+            if (OrdersItem != null)
             {
-                return this.Ok(CustomerItem);
+                return this.Ok(OrdersItem);
             }
             return NotFound();
         }
