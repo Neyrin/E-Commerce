@@ -13,46 +13,38 @@ namespace WebShop.UnitTests.Services
 {
     class CartServiceTests
     {
-        private ICartRepository cartRepository;
-        private CartService newsService;
+        private CartService cartService;
 
         [SetUp]
         public void SetUp()
         {
-            this.cartRepository = A.Fake<ICartRepository>();
-            this.newsService = new CartService(this.cartRepository);
+            this.cartService = new CartService(
+             new CartRepository("Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=EC1cmtq300;Integrated Security=True;Pooling=Falses"));
         }
 
         [Test]
-        public void Get_ReturnsResultFromRepository()
+        public void Get_returnsItemsFromDatabase()
         {
-            // Arrange
-            // Act
-            // Assert
-        }
-
-        [Test]
-        public void Get_GivenId_ReturnsResultFromRepository()
-        {
-            // Arrange
-            // Act
-            // Assert
-        }
-
-        [Test]
-        public void Add_GivenValidIds_CallsCartRepository_ThenReturnsTrue()
-        {
-            //Arrange
-            //Act
-            //Assert
+            //act
+            var results = this.cartService.Get();
+            //assert
+            Assert.That(results.Count, Is.AtLeast(1));
         }
 
         //[Test]
-        //public void //Test delete here but how the fuck do I do that?()    
+        //public void Get_GivenId_ReturnsResultFromRepository()
         //{
-            //Arrange
-            //Act
-            //Assert
+        //    // Arrange
+        //    // Act
+        //    // Assert
+        //}
+
+        //[Test]
+        //public void Add_GivenValidIds_CallsCartRepository_ThenReturnsTrue()
+        //{
+        //    //Arrange
+        //    //Act
+        //    //Assert
         //}
     }
 }

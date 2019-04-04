@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 using NUnit;
 using FakeItEasy;
@@ -35,22 +36,6 @@ namespace WebShop.UnitTests.Services
             Assert.That(results[0].ProductType, Is.EqualTo("Poster"));
             Assert.That(results[0].Price, Is.EqualTo(12));
         }
-
-        //[Test]
-        //public void Get_GivenId_ReturnsResultFromRepository()
-        //{
-        //    // Arrange
-        //    // Act
-        //    // Assert
-        //}
-
-        //[Test]
-        //public void Add_GivenValidIds_CallsProductsRepository_ThenReturnsTrue()
-        //{
-        //    //Arrange
-        //    //Act
-        //    //Assert
-        //}
     }
 }
 
